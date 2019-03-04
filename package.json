@@ -1,0 +1,24 @@
+{
+  "name": "mee-mvc",
+  "version": "1.0.0",
+  "description": "Mongoose - EJS - Express - MVC",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "license": "MIT",
+  "author": "stefaleon",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^2.1.1",
+    "csurf": "^1.9.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.3.1",
+    "mongoose": "^5.4.13",
+    "nodemailer": "^5.1.1",
+    "nodemailer-sendgrid-transport": "^0.2.0"
+  }
+}

@@ -1,0 +1,42 @@
+<%- include('../includes/top.ejs') %>
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main class="myContainer">
+        <% if (errorMessage) { %>
+        <div class="myFlashMessage myFlashMessageError">
+            <%= errorMessage %>
+        </div>
+        <% } %>
+        <div class="myCentered">
+            <form action="/log-in" method="POST">
+                <div class="myForm">
+                    <div class="myFormItem">
+                        <label for="email">E-Mail</label>                        
+                        <input 
+                        class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                        type="email" name="email" id="email" value="<%= oldInput.email %>"
+                        />
+                    </div>
+                    <div class="myFormItem">
+                        <label for="password">Password</label>
+                        <input 
+                        class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                        type="password" name="password" id="password" value="<%= oldInput.password %>"
+                        />
+                    </div>
+                </div>
+                <div class="myCentered">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                    <button class="myButton" type="submit">Log In</button>
+                </div>
+            </form>            
+        </div>
+        <div class="myCentered">
+            <a href="/reset">Reset Password</a>
+        </div>
+    </main>
+
+    <%- include('../includes/bottom.ejs') %>

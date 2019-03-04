@@ -1,0 +1,22 @@
+<div class="myNav">
+    <div>
+        <a href="/">MEE-MVC</a>
+    </div>
+    <div>
+        <% if (isAuthenticated) { %>
+        <a href="/add-comment">Add A Comment</a>
+        <% } %>
+        <a href="/display-comments">Display Comments</a>
+    </div>
+    <div>
+        <% if (!isAuthenticated) { %>
+        <a href="/log-in">Log In</a>
+        <a href="/sign-up">Sign Up</a>
+        <% } else {%>
+        <form action="/log-out" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />            
+            <button class="myButtonThatLooksLikeLink" type="submit">Log Out</button>
+        </form>
+        <% } %>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<section class="pagination"> 
+    <% if (paginationObject.hasItems) { %> 
+        <span class="gotopage">Go to page</span>   
+    
+        <% if (paginationObject.currentPage !== 1 && paginationObject.previousPage !== 1) { %>        
+            <a href="?page=1">1</a>
+        <% } %>
+        <% if (paginationObject.hasPreviousPage) { %>
+            <a href="?page=<%= paginationObject.previousPage %>"><%= paginationObject.previousPage %></a>
+        <% } %>
+        <a href="?page=<%= paginationObject.currentPage %>" class="active"><%= paginationObject.currentPage %></a>
+        <% if (hasNextPage) { %>
+            <a href="?page=<%= paginationObject.nextPage %>"><%= paginationObject.nextPage %></a>
+        <% } %>
+        <% if (paginationObject.lastPage !== paginationObject.currentPage && paginationObject.nextPage !== paginationObject.lastPage) { %>
+            <a href="?page=<%= paginationObject.lastPage %>"><%= paginationObject.lastPage %></a>
+        <% } %>
+    <% } %>
+</section>

@@ -1,0 +1,29 @@
+<%- include('../includes/top.ejs') %>
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main class="myContainer">
+        <% if (errorMessage) { %>
+        <div class="myFlashMessage myFlashMessageError">
+            <%= errorMessage %>
+        </div>
+        <% } %>
+        <div class="myCentered">
+            <form action="/reset" method="POST">
+                <div class="myForm">
+                    <div class="myFormItem">
+                        <label for="email">E-Mail</label>
+                        <input type="email" name="email" id="email">
+                    </div>                    
+                </div>
+                <div class="myCentered">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                    <button class="myButton" type="submit">Reset Password</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <%- include('../includes/bottom.ejs') %>

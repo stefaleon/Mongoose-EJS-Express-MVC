@@ -1,0 +1,27 @@
+<%- include('../includes/top.ejs') %>
+
+</head>
+
+<body>
+  <%- include('../includes/navigation.ejs') %>
+
+  <main class="myContainer">
+
+    <p>Comment initially posted at:
+      <%= comment.date %>
+    </p>
+    <form action="/edit-comment" method="POST">
+
+      <label for="content">Content</label>
+      <textarea name="content" id="content" rows="2"
+        cols="50"><% if (editing) { %><%= comment.content %><% } %></textarea>
+
+      <% if (editing) { %>
+      <input type="hidden" value="<%= comment._id %>" name="commentId">
+      <% } %>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <button class="myButton" type="submit">Submit</button>
+    </form>
+  </main>
+
+  <%- include('../includes/bottom.ejs') %>

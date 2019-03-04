@@ -1,0 +1,49 @@
+<%- include('../includes/top.ejs') %>
+
+</head>
+
+<body>
+  <%- include('../includes/navigation.ejs') %>
+
+  <main class="myContainer">
+
+    <% if (comments.length > 0) { %>
+
+    <% for (let comment of comments) { %>
+    <li class="myBox">
+      <div class="myItem">
+        <p> Posted by: </p>
+        <p></p><%= comment.userId.email %></p>
+      </div>
+      <div class="myItem">
+        <p> On:</p>
+        <p> <%= comment.date %> </p>
+      </div>
+
+      <div class="myItem">
+        <%= comment.content %>
+      </div>
+      <% if (isAuthenticated && comment.userId._id.toString() === currentUser._id.toString()) { %>
+      <div class="myItem">
+        <a href="/edit-comment/<%= comment._id %>?edit=true" class="btn">Edit</a>
+      </div>
+      <div class="myItem">
+        <form action="delete-comment" method="POST">
+          <input type="hidden" value="<%= comment._id %>" name="commentId">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <button class="myButtonThatLooksLikeLink" type="submit">Delete</button>
+        </form>
+        <% } %>
+      </div>
+    </li>
+    <% } %>
+
+    <% } else { %>
+    <p>No comments found.</p>
+    <% } %>
+
+    <%- include('../includes/pagination.ejs', paginationObject) %>
+
+  </main>
+
+  <%- include('../includes/bottom.ejs') %>
