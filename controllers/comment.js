@@ -10,7 +10,7 @@ const handleError = (err) => {
   return next(error);
 };
 
-const ITEMS_PER_PAGE = 3;
+const ITEMS_PER_PAGE = 5;
 const paginator = (page, ITEMS_PER_PAGE, totalItems) => {
   return {
     hasItems: totalItems > 0,
@@ -51,10 +51,12 @@ exports.getComments = (req, res, next) => {
   const currentUser = req.user;
   const page = parseInt(req.query.page) || 1;
   let totalItems;
+  let itemCounterStartInCurrentPage;
   Comment   
-    .countDocuments()
+    .estimatedDocumentCount()
     .then(number => {
       totalItems = number;
+      itemCounterStartInCurrentPage = totalItems - ITEMS_PER_PAGE*(page-1);
       return Comment
         .find()
         .sort({ date: -1 })
@@ -64,6 +66,7 @@ exports.getComments = (req, res, next) => {
     })
     .then(comments => {
       res.render('comment/comments', {
+        itemCounterStartInCurrentPage,
         comments,
         pageTitle: 'Comments',
         currentUser,
