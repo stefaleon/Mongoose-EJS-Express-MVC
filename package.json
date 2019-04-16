@@ -10,6 +10,7 @@
   "author": "stefaleon",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "connect-mongodb-session": "^2.1.1",
     "csurf": "^1.9.0",
@@ -17,6 +18,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "express-validator": "^5.3.1",
+    "helmet": "^3.16.0",
     "mongoose": "^5.4.13",
     "nodemailer": "^5.1.1",
     "nodemailer-sendgrid-transport": "^0.2.0"

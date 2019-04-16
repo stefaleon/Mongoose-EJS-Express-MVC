@@ -5,6 +5,8 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
 const csrf = require('csurf');
+const helmet = require('helmet');
+const compression = require('compression')
 
 const errorController = require('./controllers/error');
 const mainRoutes = require('./routes/main');
@@ -27,6 +29,8 @@ const csrfProtection = csrf();
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
+app.use(helmet());
+app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({
     extended: false

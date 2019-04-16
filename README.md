@@ -191,3 +191,19 @@ $ npm install express-validator --save
 * Add a section containing the pagination links in `views/includes/pagination.ejs`. Use it in the `comments` view.
 * Add the pagination logic to the fetching of the `comments` in the `getComments` action. The render parameters include the pagination object which is defined by use of the `paginator` helper function.
 * Configure the styling for the pagination links in `main.css`.
+
+
+## secure headers
+
+*Helmet helps you secure your Express apps by setting various HTTP headers. It’s not a silver bullet, but it can help!*
+* Install the `helmet` package and use it in `app.js` in order to include security headers in the responses.
+```
+$ npm install helmet --save
+```
+
+## use compression
+
+* Install the `compression` package and use it in `app.js` in order to compress the assets over the wire.
+```
+$ npm install compression --save
+```
