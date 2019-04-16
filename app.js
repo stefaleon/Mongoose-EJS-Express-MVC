@@ -12,12 +12,11 @@ const errorController = require('./controllers/error');
 const mainRoutes = require('./routes/main');
 const commentRoutes = require('./routes/comment');
 const authRoutes = require('./routes/auth');
-const private = require('./private/private.js');
 const User = require('./models/user');
 
 const PORT = process.env.PORT || 3000;
-const MONGODB_URI = process.env.dbURL || private.getMongoDBString;
-const SECRET = process.env.SECRET || private.sessionSecret;
+const MONGODB_URI = process.env.dbURL;
+const SECRET = process.env.SECRET;
 
 const app = express();
 const store = new MongoDBStore({
